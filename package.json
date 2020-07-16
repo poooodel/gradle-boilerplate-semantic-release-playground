@@ -30,7 +30,8 @@
   },
   "release": {
     "branches": [
-      "master"
+      "master",
+      "master-old-fashion"
     ],
     "preset": "eslint",
     "plugins": [
