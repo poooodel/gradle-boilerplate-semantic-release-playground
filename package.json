@@ -4,6 +4,7 @@
     "@semantic-release/commit-analyzer": "8.0.1",
     "@semantic-release/git": "9.0.0",
     "@semantic-release/github": "7.0.7",
+    "@semantic-release/gitlab": "6.0.4",
     "@semantic-release/release-notes-generator": "9.0.1",
     "commitlint": "9.1.0",
     "conventional-changelog-conventionalcommits": "4.3.0",
@@ -24,23 +25,18 @@
   },
   "lint-staged": {
     "*.{md,json}": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.{gradle,java}": [
-      "git add"
-    ],
-    "*": [
-      "git secrets --register-aws",
-      "git secrets --scan"
+      "prettier --write"
     ]
   },
   "release": {
+    "branches": [
+      "master"
+    ],
+    "preset": "eslint",
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/changelog",
-      "@semantic-release/github",
       "gradle-semantic-release-plugin",
       [
         "@semantic-release/git",
@@ -51,7 +47,10 @@
           ]
         }
       ]
-    ]
+    ],
+    "dryRun": true,
+    "ci": false,
+    "debug": true
   },
   "engines": {
     "node": "^12.12.0"
